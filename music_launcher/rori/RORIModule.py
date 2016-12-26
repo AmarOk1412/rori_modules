@@ -1,8 +1,8 @@
 from rori import RORI
 
 class RORIModule:
-    def __init__(self):
-        self.rori = RORI.RORI()
+    def __init__(self, ip, port):
+        self.rori = RORI.RORI(ip, port)
         self.stop_processing = False
 
     def process(self, data):
