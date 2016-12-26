@@ -5,7 +5,7 @@
     "img":"rori_modules/music_launcher/_min.jpg",
     "enabled":true,
     "condition":"(musi(c|que) ?!)|((play|lance|joue).{1,30}(musi(c|que)))",
-    "path":"rori_modules/music_launcher/module.py",
+    "path":"music_launcher/module.py",
     "priority":0,
     "deps":[]
   }
