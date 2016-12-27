@@ -20,6 +20,7 @@ class RORI:
 
     def send(self, destination, data):
         url = "http://" + self.base_url + ":" + self.port + "/send/" + str(destination)
+        print('send:'+data.to_json_str())
         res = requests.post(url, data=data.to_json_str())
         return res
 
@@ -36,13 +37,10 @@ class RORI:
             self.send(c, RORIData.RORIData(content=content, datatype=datatype))
 
 
-    def get_localized_sentence(self, id):
+    def get_localized_sentence(self, id, data):
             try:
-                with open('sentences.json') as f:
-                    data = f.read()
-                    json_data = json.loads(data)
-                    result = json_data[id][self.lang]
-                    return result
-                return ""
+                json_data = json.loads(data)
+                result = json_data[id][self.lang]
+                return result
             except:
                 return ""
