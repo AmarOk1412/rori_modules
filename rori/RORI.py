@@ -20,29 +20,27 @@ class RORI:
 
     def send(self, destination, data):
         url = "http://" + self.base_url + ":" + self.port + "/send/" + str(destination)
+        print('send:'+data.to_json_str())
         res = requests.post(url, data=data.to_json_str())
         return res
 
-    def send_for_best_client(self, datatype, user, content, client):
+    def send_for_best_client(self, datatype, user, content):
         clients_datatype = self.getClientFor(user=user, datatype=datatype)
         if clients_datatype:
-            res = self.send(clients_datatype[0]['id'], RORIData.RORIData(content=content, datatype=datatype))
+            res = self.send(clients_datatype[0]['id'], RORIData.RORIData(client="rori_server", content=content,  author="rori_server", datatype=datatype))
             return res
         return None
 
     def send_to_all_client(self, datatype, user, content, client):
         clients_datatype = self.getClientFor(user=user, datatype=datatype, origin=client)
         for c in clients_datatype:
-            self.send(c, RORIData.RORIData(content=content, datatype=datatype))
+            self.send(c, RORIData.RORIData(client="rori_server", content=content,  author="rori_server", datatype=datatype))
 
 
-    def get_localized_sentence(self, id):
+    def get_localized_sentence(self, id, data):
             try:
-                with open('sentences.json') as f:
-                    data = f.read()
-                    json_data = json.loads(data)
-                    result = json_data[id][self.lang]
-                    return result
-                return ""
+                json_data = json.loads(data)
+                result = json_data[id][self.lang]
+                return result
             except:
                 return ""

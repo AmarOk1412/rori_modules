@@ -33,6 +33,4 @@ if len(sys.argv) == 5:
     m.process(RORIData(author=author, content=content, client=client, datatype=datatype))
     print(m.continue_processing())
 else:
-    for el in sys.argv:
-        print("1:" + el)
-    #print("usage: python3 module.py author content client datatype)")
+    print("usage: python3 module.py author content client datatype)")

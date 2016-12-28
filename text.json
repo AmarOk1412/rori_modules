@@ -2,10 +2,70 @@
   {
     "name":"music_launcher",
     "desc":"Launch a random music from player",
-    "img":"rori_modules/music_launcher/_min.jpg",
+    "img":"rori_modules/music/music_launcher/_min.jpg",
     "enabled":true,
-    "condition":"(musi(c|que) ?!)|((play|lance|joue).{1,30}(musi(c|que)))",
-    "path":"music_launcher/module.py",
+    "condition":"^(musi(c|que) ?!?)|((play|lance|joue).{1,30}(musi(c|que) ?!?))$",
+    "path":"music/music_launcher/module.py",
+    "priority":0,
+    "deps":[]
+  },
+  {
+    "name":"music_stop",
+    "desc":"Stop playing music",
+    "img":"rori_modules/music/music_stop/_min.jpg",
+    "enabled":true,
+    "condition":"^stop.{1,8}musi(c|que)",
+    "path":"music/music_stop/module.py",
+    "priority":0,
+    "deps":[]
+  },
+  {
+    "name":"hello_world",
+    "desc":"Say Hello",
+    "img":"rori_modules/talk/hello_world/_min.jpg",
+    "enabled":true,
+    "condition":"^(salut|bonjour|bonsoir|hei|hi|hello|yo|o/)( rori|a?)$",
+    "path":"talk/hello_world/module.py",
+    "priority":0,
+    "deps":[]
+  },
+  {
+    "name":"goodbye_world",
+    "desc":"Say Goodbye",
+    "img":"rori_modules/talk/goodbye_world/_min.jpg",
+    "enabled":true,
+    "condition":"^(au(.?)revoir|(à|a) la prochaine|bonne soir(ée|ee)|good( |-)bye|bye|j.y.vais)",
+    "path":"talk/goodbye_world/module.py",
+    "priority":0,
+    "deps":[]
+  },
+  {
+    "name":"blackscreen",
+    "desc":"set the screen black",
+    "img":"rori_modules/command/blackscreen/_min.jpg",
+    "enabled":true,
+    "condition":"^((é|e)cran.noir|black.screen|(go to | ?)sleep|(vas | ?)dor(s|t|mir))",
+    "path":"command/blackscreen/module.py",
+    "priority":0,
+    "deps":[]
+  },
+  {
+    "name":"mutesound",
+    "desc":"Set in silent mode",
+    "img":"rori_modules/command/mutesound/_min.jpg",
+    "enabled":true,
+    "condition":"^(sourdine|muet|mute|coupe le son|no sound please)$",
+    "path":"command/mutesound/module.py",
+    "priority":0,
+    "deps":[]
+  },
+  {
+    "name":"lock",
+    "desc":"Lock the computer",
+    "img":"rori_modules/command/lock/_min.jpg",
+    "enabled":true,
+    "condition":"(ver(r| ?)ouil(l| ?)(e (l.ordi|le pc|l'(é|e)cran|toi)|age)|bloque.toi)|^lock",
+    "path":"command/lock/module.py",
     "priority":0,
     "deps":[]
   }
