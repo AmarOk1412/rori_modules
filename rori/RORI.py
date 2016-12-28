@@ -1,13 +1,14 @@
 import json
 import requests
 
-from rori import RORIData
+from rori import RORIData, RORIEmotions
 
 class RORI:
     def __init__(self, url, port):
         self.lang = "en"
         self.base_url = url
         self.port = port
+        self.emotions = RORIEmotions.RORIEmotions()
 
     def set_language(self, new_lang):
         self.lang = new_lang

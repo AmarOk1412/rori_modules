@@ -1,5 +1,15 @@
 [
   {
+    "name":"history",
+    "desc":"Store messages into a database. In the future, it will be usefull for others",
+    "img":"rori_modules/history/_min.jpg",
+    "enabled":true,
+    "condition":".*",
+    "path":"history/module.py",
+    "priority":0,
+    "deps":[]
+  },
+  {
     "name":"music_launcher",
     "desc":"Launch a random music from player",
     "img":"rori_modules/music/music_launcher/_min.jpg",
