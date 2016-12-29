@@ -34,7 +34,7 @@ if len(sys.argv) == 5:
       }
      }
     """
-    m = Module('127.0.0.1','3000',sentences)
+    m = Module(sentences)
     m.process(RORIData(author=author, content=content, client=client, datatype=datatype, secret=""))
     print(m.continue_processing())
 else:

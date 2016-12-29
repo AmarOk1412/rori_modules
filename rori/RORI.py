@@ -4,12 +4,17 @@ import requests
 from rori import RORIData, RORIEmotions
 
 class RORI:
-    def __init__(self, url, port):
-        # TODO from file
-        self.lang = "en"
-        self.secret = "badsecret"
-        self.base_url = url
-        self.port = port
+    def __init__(self):
+        self.lang = ""
+        self.secret = ""
+        self.base_url = ""
+        self.port = ""
+        with open("config.json") as f:
+            data = json.loads(f.read())
+            self.lang = data['lang']
+            self.secret = data['secret']
+            self.base_url = data['base_url']
+            self.port = data['port']
         self.emotions = RORIEmotions.RORIEmotions()
 
     def set_language(self, new_lang):
