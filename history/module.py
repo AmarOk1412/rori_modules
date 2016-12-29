@@ -8,7 +8,7 @@ if len(sys.argv) == 5:
     content = sys.argv[2][1:-1]
     client = sys.argv[3][1:-1]
     datatype = sys.argv[4][1:-1]
-    data = RORIData(author=author, content=content, client=client, datatype=datatype)
+    data = RORIData(author=author, content=content, client=client, datatype=datatype, secret="")
     db = DBManager()
     db.store_data(data.author, data.content, data.client, data.datatype)
 else:

@@ -46,7 +46,7 @@ if len(sys.argv) == 5:
      }
     """
     m = Module('127.0.0.1','3000',sentences)
-    m.process(RORIData(author=author, content=content, client=client, datatype=datatype))
+    m.process(RORIData(author=author, content=content, client=client, datatype=datatype, secret=""))
     print(m.continue_processing())
 else:
     print("usage: python3 module.py author content client datatype")

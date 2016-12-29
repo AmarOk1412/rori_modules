@@ -5,7 +5,9 @@ from rori import RORIData, RORIEmotions
 
 class RORI:
     def __init__(self, url, port):
+        # TODO from file
         self.lang = "en"
+        self.secret = "badsecret"
         self.base_url = url
         self.port = port
         self.emotions = RORIEmotions.RORIEmotions()
@@ -28,14 +30,14 @@ class RORI:
     def send_for_best_client(self, datatype, user, content):
         clients_datatype = self.getClientFor(user=user, datatype=datatype)
         if clients_datatype:
-            res = self.send(clients_datatype[0]['id'], RORIData.RORIData(client="rori_server", content=content,  author="rori_server", datatype=datatype))
+            res = self.send(clients_datatype[0]['id'], RORIData.RORIData(client="rori_server", content=content,  author="rori_server", datatype=datatype, secret=self.secret))
             return res
         return None
 
     def send_to_all_client(self, datatype, user, content, client):
         clients_datatype = self.getClientFor(user=user, datatype=datatype, origin=client)
         for c in clients_datatype:
-            self.send(c, RORIData.RORIData(client="rori_server", content=content,  author="rori_server", datatype=datatype))
+            self.send(c, RORIData.RORIData(client="rori_server", content=content,  author="rori_server", datatype=datatype, secret=self.secret))
 
 
     def get_localized_sentence(self, id, data):
