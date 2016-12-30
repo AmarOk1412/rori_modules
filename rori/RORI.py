@@ -44,7 +44,6 @@ class RORI:
         for c in clients_datatype:
             self.send(c, RORIData.RORIData(client="rori_server", content=content,  author="rori_server", datatype=datatype, secret=self.secret))
 
-
     def get_localized_sentence(self, id, data):
             try:
                 json_data = json.loads(data)

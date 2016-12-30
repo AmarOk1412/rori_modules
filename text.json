@@ -34,7 +34,7 @@
     "desc":"Say Hello",
     "img":"rori_modules/talk/hello_world/_min.jpg",
     "enabled":true,
-    "condition":"^(salut|bonjour|bonsoir|hei|hi|hello|yo|o/)( rori|a?)$",
+    "condition":"^(salut|bonjour|bonsoir|hei|hi|hello|yo|o/)( rori| ?!?)$",
     "path":"talk/hello_world/module.py",
     "priority":0,
     "deps":[]
@@ -46,6 +46,66 @@
     "enabled":true,
     "condition":"^(au(.?)revoir|(à|a) la prochaine|bonne soir(ée|ee)|good( |-)bye|bye|j.y.vais)",
     "path":"talk/goodbye_world/module.py",
+    "priority":0,
+    "deps":[]
+  },
+  {
+    "name":"age",
+    "desc":"Give the age of RORI",
+    "img":"rori_modules/talk/age/_min.jpg",
+    "enabled":true,
+    "condition":"^(quel es(t) ton.{0,20}(â|a)ge|how old are you|quel.{0,20}(â|a)ge.{0,20}(tu)|quan.{0,10}(existe|tu né|(t'|tu).{0,30}cr(éé|ee))|Since when.{0,100}exist|when.{0,100}create)",
+    "path":"talk/age/module.py",
+    "priority":0,
+    "deps":[]
+  },
+  {
+    "name":"license",
+    "desc":"Give the license of RORI",
+    "img":"rori_modules/talk/license/_min.jpg",
+    "enabled":true,
+    "condition":"puis.je.{0,100}(source|code)|sous.quelle.licence|(where |a?)can i read.{0,100}code|are you.{0,20}(free|under.{0,100}license)",
+    "path":"talk/license/module.py",
+    "priority":0,
+    "deps":[]
+  },
+  {
+    "name":"creator",
+    "desc":"Give details about AmarOk",
+    "img":"rori_modules/talk/creator/_min.jpg",
+    "enabled":true,
+    "condition":"^(pr(é|e)sente|qui).{0,30}(amarok|ton cr(é|e)ateur|t'a(s) cr(éé|ee))|who.{0,100}(create|is amarok|programmer|creator)",
+    "path":"talk/creator/module.py",
+    "priority":0,
+    "deps":[]
+  },
+  {
+    "name":"name",
+    "desc":"Give the name of RORI",
+    "img":"rori_modules/talk/name/_min.jpg",
+    "enabled":true,
+    "condition":"^(quel est? ton.{0,30}nom.{0,40})|qui e(s|t).{0,4}(tu|vous)|o(u|ù)vien(s|t).ton.{0,20}nom|say.your.name|what.is.your.name|who.are.you|why.rori|rori.{0,100}come.from",
+    "path":"talk/name/module.py",
+    "priority":0,
+    "deps":[]
+  },
+  {
+    "name":"humor",
+    "desc":"Get if RORI is happy today",
+    "img":"rori_modules/talk/humor/_min.jpg",
+    "enabled":true,
+    "condition":"(c|ç)a.va|tu.{0,30}va(s| ?).{0,30}(bien|mal|comment|bof)|are you ok|comment.{0,30}va(s| ?)|how are you",
+    "path":"talk/humor/module.py",
+    "priority":0,
+    "deps":[]
+  },
+  {
+    "name":"sing",
+    "desc":"Try to sing",
+    "img":"rori_modules/talk/sing/_min.jpg",
+    "enabled":true,
+    "condition":"^(tu peux| ?)chante(r| ?)|sing",
+    "path":"talk/sing/module.py",
     "priority":0,
     "deps":[]
   },
@@ -70,6 +130,26 @@
     "deps":[]
   },
   {
+    "name":"enablesound",
+    "desc":"Set sound in normal mode",
+    "img":"rori_modules/command/enablesound/_min.jpg",
+    "enabled":true,
+    "condition":"^(remet le |a?)son$|on.{0,20}sound|sound.{0,20}on",
+    "path":"command/enablesound/module.py",
+    "priority":0,
+    "deps":[]
+  },
+  {
+    "name":"uptime",
+    "desc":"Get the uptime of the rori_server",
+    "img":"rori_modules/talk/uptime/_min.jpg",
+    "enabled":true,
+    "condition":"uptime|since.when.you.{0,20}up",
+    "path":"talk/uptime/module.py",
+    "priority":0,
+    "deps":[]
+  },
+  {
     "name":"lock",
     "desc":"Lock the computer",
     "img":"rori_modules/command/lock/_min.jpg",
@@ -77,6 +157,16 @@
     "condition":"(ver(r| ?)ouil(l| ?)(e (l.ordi|le pc|l'(é|e)cran|toi)|age)|bloque.toi)|^lock",
     "path":"command/lock/module.py",
     "priority":0,
+    "deps":[]
+  },
+  {
+    "name":"alarm",
+    "desc":"RORI will ping you when the clock will finish",
+    "img":"rori_modules/talk/alarm/_min.jpg",
+    "enabled":true,
+    "condition":"(in|at|dans|à|a).([0-9]+)(:|h|.*)([0-9]*)",
+    "path":"talk/alarm/module.py",
+    "priority":1,
     "deps":[]
   }
 ]
