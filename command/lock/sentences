@@ -1,0 +1,14 @@
+{
+  "mute": {
+    "en":"screen is locked",
+    "fr_FR":"écran verrouillé !"
+  },
+  "cant": {
+    "en":"I can't detect endpoint for this command",
+    "fr_FR":"Je ne trouve pas de sortie pour cette command..."
+  },
+  "later": {
+    "en":"Maybe later...",
+    "fr_FR":"Je n'en ai pas vraiment envie pour le moment..."
+  }
+}

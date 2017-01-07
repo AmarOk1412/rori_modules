@@ -1,3 +1,5 @@
+import json
+
 class RORIData:
     def __init__(self, author, content, client, datatype, secret):
         self.author = author
@@ -15,3 +17,7 @@ class RORIData:
          "secret":"%s"
         }
         """ % (self.author, self.content, self.client, self.datatype, self.secret)
+
+def create_data_from_json(str_json):
+    data = json.loads(str_json)
+    return RORIData(author=data["author"], content=data["content"], client=data["client"], datatype=data["datatype"], secret=data["secret"])

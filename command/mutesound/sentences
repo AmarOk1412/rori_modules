@@ -1,0 +1,14 @@
+{
+  "mute": {
+    "en":"sound is muted",
+    "fr_FR":"je me tais"
+  },
+  "cant": {
+    "en":"I can't detect endpoint for this command",
+    "fr_FR":"Je ne trouve pas de sortie pour cette command..."
+  },
+  "later": {
+    "en":"No, the sound is correct...",
+    "fr_FR":"nope, je laisse le son..."
+  }
+}

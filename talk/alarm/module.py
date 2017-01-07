@@ -1,12 +1,34 @@
 from rori import RORIModule, RORIData
 import sys, os, re, time
-from alarm import Alarm
+import threading
+
+
+class Alarm(threading.Thread):
+    def __init__(self, hours, minutes):
+        super(Alarm, self).__init__()
+        self.hours = int(hours)
+        self.minutes = int(minutes)
+        self.keep_running = True
+        self.is_running = True
+
+    def run(self):
+        try:
+            while self.keep_running:
+                now = time.localtime()
+                if (now.tm_hour == self.hours and now.tm_min == self.minutes):
+                    self.is_running = False
+                    return
+                time.sleep(60)
+        except:
+            return
+
+    def just_die(self):
+        self.keep_running = False
+
 
 class Module(RORIModule):
     def process(self, data):
-        print(data.content)
         m = re.findall(r"(in|at|dans|à|a).([0-9]+)(:|h|.*)([0-9]*)", data.content)
-        print(m[0])
         hour = 0
         minute = 0
         if m[0][0] == "dans" or m[0][0] == "in":
@@ -45,31 +67,3 @@ class Module(RORIModule):
             time.sleep(20)
         string_to_say = self.rori.get_localized_sentence('ping', self.sentences) + data.author
         res = self.rori.send_for_best_client("text", data.author, string_to_say)
-
-# TODO, in the future, RORI will have to do this in Rust
-if len(sys.argv) == 5:
-    author = sys.argv[1][1:-1]
-    content = sys.argv[2][1:-1]
-    client = sys.argv[3][1:-1]
-    datatype = sys.argv[4][1:-1]
-
-    sentences = """{
-      "ping": {
-        "en":"Hei! Ping ",
-        "fr_FR":"Hei ! Ping "
-      },
-      "set": {
-        "en":"I will ping you at ",
-        "fr_FR":"Je vous enverrais un message à "
-      },
-      "cant": {
-        "en":"I don't understand...",
-        "fr_FR":"Désolé, je n'ai pas pigé ta phrase."
-      }
-     }
-    """
-    m = Module(sentences)
-    m.process(RORIData(author=author, content=content, client=client, datatype=datatype, secret=""))
-    print(m.continue_processing())
-else:
-    print("usage: python3 module.py author content client datatype)")

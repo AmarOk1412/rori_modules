@@ -1,0 +1,18 @@
+{
+  "salut": {
+    "en":"Hi",
+    "fr_FR":"Salut"
+  },
+  "bonjour": {
+    "en":"Hello",
+    "fr_FR":"Bonjour"
+  },
+  "longtime": {
+    "en":"Hello, it's been a long time",
+    "fr_FR":"Salut ! Ça faisait un petit bout de temps..."
+  },
+  "o/": {
+    "en":"o/",
+    "fr_FR":"o/"
+  }
+}
