@@ -1,5 +1,6 @@
 import json
 import requests
+import random
 
 from rori import RORIData, RORIEmotions
 
@@ -51,3 +52,11 @@ class RORI:
                 return result
             except:
                 return ""
+
+    def continue_action_if(self, key, percentage, factor=20):
+        value = self.emotions.get_attr(key)
+        mean = 0.0
+        for i in range(0,2):
+            mean += random.normalvariate(0,1)*factor
+        level = percentage + (mean/2)
+        return value >= level
