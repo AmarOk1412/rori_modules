@@ -15,7 +15,7 @@ class Module(RORIModule):
                 destination_user = question[:-len(end)].split(' ')[-1]
                 string_to_say = self.rori.get_localized_sentence('message', self.sentences).format(destination_user, data.author) + m[0][1]
                 self.rori.send_for_best_client("text", destination_user, string_to_say)
-                self.rori.remove_awaiting("write", data.author)
+                self.rori.remove_awaiting(data.author)
         else:
             # We don't know what to write
             m = re.findall(r"(send|write|crit|envoi).{0,30}message.{0,10}( à | a | to )(\w*)", data.content)

@@ -1,0 +1,18 @@
+{
+  "thanks": {
+    "en":"Thank you! It's so positive",
+    "fr_FR":"Merci ! Je suis flattée."
+  },
+  "plus": {
+    "en":"Thanks",
+    "fr_FR":"Merci."
+  },
+  "minus": {
+    "en":"Sorry, I'm so young, it's just the beginning.",
+    "fr_FR":"Désolé, je suis encore jeune, tout est encore nouveau pour moi."
+  },
+  "minable": {
+    "en":"Don't forget one thing: I will be improved in the future",
+    "fr_FR":"N'oublie pas une chose : je tente de faire du mieux que je peux."
+  }
+}

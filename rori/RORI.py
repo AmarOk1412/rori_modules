@@ -91,8 +91,8 @@ class RORI:
             return result
         return result[0]
 
-    def remove_awaiting(self, module_name, user):
+    def remove_awaiting(self, user):
         self.create_awaiting_table()
         cursor = self.emotions.conn.cursor()
-        cursor.execute("DELETE FROM Awaiting WHERE ModuleName=\"{0}\" AND User=\"{1}\"".format(module_name, user))
+        cursor.execute("DELETE FROM Awaiting WHERE User=\"{0}\"".format(user))
         self.emotions.conn.commit()

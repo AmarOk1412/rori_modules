@@ -20,6 +20,16 @@
     "deps":[]
   },
   {
+    "name":"nervermind",
+    "desc":"Forget current actions",
+    "img":"rori_modules/talk/nevermind/_min.jpg",
+    "enabled":true,
+    "condition":"^(nevermind|forget this|oublie|laisse tomber)",
+    "path":"talk/nevermind/",
+    "priority":1,
+    "deps":[]
+  },
+  {
     "name":"music_launcher",
     "desc":"Launch a random music from player",
     "img":"rori_modules/music/music_launcher/_min.jpg",
@@ -86,6 +96,16 @@
     "enabled":true,
     "condition":"^(pr(é|e)sente|qui).{0,30}(amarok|ton cr(é|e)ateur|t'a(s) cr(éé|ee))|who.{0,100}(create|is amarok|programmer|creator)",
     "path":"talk/creator/",
+    "priority":1,
+    "deps":[]
+  },
+  {
+    "name":"AFINN111",
+    "desc":"Quick evaluation if a phrase is positive or negative (AFINN111 algorithm)",
+    "img":"rori_modules/talk/AFINN111/_min.jpg",
+    "enabled":true,
+    "condition":"^(you are)",
+    "path":"talk/AFINN111/",
     "priority":1,
     "deps":[]
   },
