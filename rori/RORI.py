@@ -1,6 +1,7 @@
 import json
 import requests
 import random
+import sqlite3
 
 from rori import RORIData, RORIEmotions
 
@@ -27,9 +28,13 @@ class RORI:
         data = response.content.decode("utf-8")
         return json.loads(data)
 
+    def reprocess(self, data):
+        url = "http://" + self.base_url + ":" + self.port + "/reprocess"
+        res = requests.post(url, data=data.to_json_str())
+        return res
+
     def send(self, destination, data):
         url = "http://" + self.base_url + ":" + self.port + "/send/" + str(destination)
-        print('send:'+data.to_json_str())
         res = requests.post(url, data=data.to_json_str())
         return res
 
@@ -60,3 +65,34 @@ class RORI:
             mean += random.normalvariate(0,1)*factor
         level = percentage + (mean/2)
         return value >= level
+
+    def create_awaiting_table(self):
+        dbcur = self.emotions.conn.cursor()
+        isAttrTableRequest = "SELECT * FROM sqlite_master WHERE name ='Awaiting' and type='table'; "
+        dbcur.execute(isAttrTableRequest)
+        result = dbcur.fetchone()
+        if not result:
+            createTableRequest = "CREATE TABLE Awaiting(id INTEGER PRIMARY KEY ASC, ModuleName TEXT, User TEXT, Question TEXT);"
+            dbcur.execute(createTableRequest)
+            self.emotions.conn.commit()
+
+    def set_awaiting(self, module_name, user, question):
+        self.create_awaiting_table()
+        cursor = self.emotions.conn.cursor()
+        cursor.execute("INSERT INTO Awaiting(ModuleName, User, Question) VALUES(\"{0}\", \"{1}\", \"{2}\")".format(module_name, user, question))
+        self.emotions.conn.commit()
+
+    def is_awaiting(self, user):
+        self.create_awaiting_table()
+        cursor = self.emotions.conn.cursor()
+        cursor.execute("SELECT Question FROM Awaiting WHERE User=\"{0}\"".format(user))
+        result = cursor.fetchone()
+        if result is None:
+            return result
+        return result[0]
+
+    def remove_awaiting(self, module_name, user):
+        self.create_awaiting_table()
+        cursor = self.emotions.conn.cursor()
+        cursor.execute("DELETE FROM Awaiting WHERE ModuleName=\"{0}\" AND User=\"{1}\"".format(module_name, user))
+        self.emotions.conn.commit()

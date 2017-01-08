@@ -14,5 +14,13 @@
   "o/": {
     "en":"o/",
     "fr_FR":"o/"
+  },
+  "already": {
+    "en":"Hi, but I already see you",
+    "fr_FR":"Re-bonjour"
+  },
+  "already2": {
+    "en":"Are you amnesic?",
+    "fr_FR":"Rebonjour !"
   }
 }

@@ -10,13 +10,23 @@
     "deps":[]
   },
   {
+    "name":"wait",
+    "desc":"If we detect an interuption",
+    "img":"rori_modules/talk/wait/_min.jpg",
+    "enabled":true,
+    "condition":"^(rori.{0,5}|a?)(wait!|attends !)",
+    "path":"talk/wait",
+    "priority":0,
+    "deps":[]
+  },
+  {
     "name":"music_launcher",
     "desc":"Launch a random music from player",
     "img":"rori_modules/music/music_launcher/_min.jpg",
     "enabled":true,
     "condition":"^(musi(c|que) ?!?)|((play|lance|joue).{1,30}(musi(c|que) ?!?))$",
     "path":"music/music_launcher/",
-    "priority":0,
+    "priority":1,
     "deps":[]
   },
   {
@@ -26,7 +36,7 @@
     "enabled":true,
     "condition":"^stop.{1,8}musi(c|que)",
     "path":"music/music_stop/",
-    "priority":0,
+    "priority":1,
     "deps":[]
   },
   {
@@ -36,7 +46,7 @@
     "enabled":true,
     "condition":"^(salut|bonjour|bonsoir|hei|hi|hello|yo|o/)( rori| ?!?)$",
     "path":"talk/hello_world/",
-    "priority":0,
+    "priority":1,
     "deps":[]
   },
   {
@@ -46,7 +56,7 @@
     "enabled":true,
     "condition":"^(au(.?)revoir|(à|a) la prochaine|bonne soir(ée|ee)|good( |-)bye|bye|j.y.vais)",
     "path":"talk/goodbye_world/",
-    "priority":0,
+    "priority":1,
     "deps":[]
   },
   {
@@ -56,7 +66,7 @@
     "enabled":true,
     "condition":"^(quel es(t) ton.{0,20}(â|a)ge|how old are you|quel.{0,20}(â|a)ge.{0,20}(tu)|quan.{0,10}(existe|tu né|(t'|tu).{0,30}cr(éé|ee))|Since when.{0,100}exist|when.{0,100}create)",
     "path":"talk/age/",
-    "priority":0,
+    "priority":1,
     "deps":[]
   },
   {
@@ -66,7 +76,7 @@
     "enabled":true,
     "condition":"puis.je.{0,100}(source|code)|sous.quelle.licence|(where |a?)can i read.{0,100}code|are you.{0,20}(free|under.{0,100}license)",
     "path":"talk/license/",
-    "priority":0,
+    "priority":1,
     "deps":[]
   },
   {
@@ -76,7 +86,7 @@
     "enabled":true,
     "condition":"^(pr(é|e)sente|qui).{0,30}(amarok|ton cr(é|e)ateur|t'a(s) cr(éé|ee))|who.{0,100}(create|is amarok|programmer|creator)",
     "path":"talk/creator/",
-    "priority":0,
+    "priority":1,
     "deps":[]
   },
   {
@@ -86,7 +96,7 @@
     "enabled":true,
     "condition":"^(quel est? ton.{0,30}nom.{0,40})|qui e(s|t).{0,4}(tu|vous)|o(u|ù)vien(s|t).ton.{0,20}nom|say.your.name|what.is.your.name|who.are.you|why.rori|rori.{0,100}come.from",
     "path":"talk/name/",
-    "priority":0,
+    "priority":1,
     "deps":[]
   },
   {
@@ -96,7 +106,7 @@
     "enabled":true,
     "condition":"(c|ç)a.va|tu.{0,30}va(s| ?).{0,30}(bien|mal|comment|bof)|are you ok|comment.{0,30}va(s| ?)|how are you",
     "path":"talk/humor/",
-    "priority":0,
+    "priority":1,
     "deps":[]
   },
   {
@@ -106,7 +116,7 @@
     "enabled":true,
     "condition":"^(tu peux| ?)chante(r| ?)|sing",
     "path":"talk/sing/",
-    "priority":0,
+    "priority":1,
     "deps":[]
   },
   {
@@ -116,7 +126,7 @@
     "enabled":true,
     "condition":"^((é|e)cran.noir|black.screen|(go to | ?)sleep|(vas | ?)dor(s|t|mir))",
     "path":"command/blackscreen/",
-    "priority":0,
+    "priority":1,
     "deps":[]
   },
   {
@@ -126,7 +136,7 @@
     "enabled":true,
     "condition":"^(sourdine|muet|mute|coupe le son|no sound please)$",
     "path":"command/mutesound/",
-    "priority":0,
+    "priority":1,
     "deps":[]
   },
   {
@@ -136,7 +146,7 @@
     "enabled":true,
     "condition":"^(remet le |a?)son$|on.{0,20}sound|sound.{0,20}on",
     "path":"command/enablesound/",
-    "priority":0,
+    "priority":1,
     "deps":[]
   },
   {
@@ -146,7 +156,7 @@
     "enabled":true,
     "condition":"uptime|since.when.you.{0,20}up",
     "path":"talk/uptime/",
-    "priority":0,
+    "priority":1,
     "deps":[]
   },
   {
@@ -156,7 +166,7 @@
     "enabled":true,
     "condition":"(ver(r| ?)ouil(l| ?)(e (l.ordi|le pc|l'(é|e)cran|toi)|age)|bloque.toi)|^lock",
     "path":"command/lock/",
-    "priority":0,
+    "priority":1,
     "deps":[]
   },
   {
@@ -166,7 +176,17 @@
     "enabled":true,
     "condition":"(ping|wake|veille|envoi|send).{0,100}(in|at|dans|à|a).([0-9]+)(:|h|.*)([0-9]*)",
     "path":"talk/alarm/",
-    "priority":1,
+    "priority":2,
+    "deps":[]
+  },
+  {
+    "name":"write",
+    "desc":"Send a message to somebody in 2 times",
+    "img":"rori_modules/talk/write/_min.jpg",
+    "enabled":true,
+    "condition":".+",
+    "path":"talk/write/",
+    "priority":2,
     "deps":[]
   }
 ]
