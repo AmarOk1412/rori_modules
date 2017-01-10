@@ -1,7 +1,7 @@
 {
   "mute": {
-    "en":"screen is locked",
-    "fr_FR":"écran verrouillé !"
+    "en":"Your computer is locked.",
+    "fr_FR":"L'ordinateur est maintenant verrouillé !"
   },
   "cant": {
     "en":"I can't detect endpoint for this command",

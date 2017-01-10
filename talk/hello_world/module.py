@@ -25,11 +25,14 @@ class Module(RORIModule):
         db = DBManager()
         messages = db.select_message_from_today(data.author)
         alreadySeen = False
+        nbSeen = 0
         for message in messages:
             m = re.findall(r"^(salut|bonjour|bonsoir|hei|hi|hello|yo|o/)( rori| ?!?)$", message[0])
             if len(m) > 0:
-                alreadySeen = True
-                break
+                nbSeen += 1
+                if nbSeen > 1:
+                    alreadySeen = True
+                    break
         if alreadySeen:
             randomstr = random.choice(["already", "already2", ""])
             string_to_say = self.rori.get_localized_sentence(randomstr, self.sentences)

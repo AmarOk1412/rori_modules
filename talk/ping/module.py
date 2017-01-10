@@ -1,5 +1,29 @@
 from rori import RORIModule, RORIData
 import sys, os, re, time
+import threading
+
+
+class Alarm(threading.Thread):
+    def __init__(self, hours, minutes):
+        super(Alarm, self).__init__()
+        self.hours = int(hours)
+        self.minutes = int(minutes)
+        self.keep_running = True
+        self.is_running = True
+
+    def run(self):
+        try:
+            while self.keep_running:
+                now = time.localtime()
+                if (now.tm_hour == self.hours and now.tm_min == self.minutes):
+                    self.is_running = False
+                    return
+                time.sleep(60)
+        except:
+            return
+
+    def just_die(self):
+        self.keep_running = False
 
 
 class Module(RORIModule):
@@ -35,11 +59,11 @@ class Module(RORIModule):
         minute_str = "%02d" % minute
         hour_str = "%02d" % hour
 
-        string_to_say = hour_str + ":" + minute_str
-        res = self.rori.send_for_best_client("alarm", data.author, string_to_say)
-        if res is None:
-            string_to_say = self.rori.get_localized_sentence('nodetect', self.sentences)
-            self.rori.send_for_best_client("text", data.author, string_to_say)
-        else:
-            string_to_say = self.rori.get_localized_sentence('ok', self.sentences) + string_to_say
-            self.rori.send_for_best_client("text", data.author, string_to_say)
+        alarm = Alarm(int(hour), int(minute))
+        string_to_say = self.rori.get_localized_sentence('set', self.sentences) + hour_str + "h" + minute_str
+        res = self.rori.send_for_best_client("text", data.author, string_to_say)
+        alarm.start()
+        while alarm.is_running:
+            time.sleep(20)
+        string_to_say = self.rori.get_localized_sentence('ping', self.sentences) + data.author
+        res = self.rori.send_for_best_client("text", data.author, string_to_say)

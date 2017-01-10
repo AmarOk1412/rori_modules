@@ -124,7 +124,7 @@
     "desc":"Get if RORI is happy today",
     "img":"rori_modules/talk/humor/_min.jpg",
     "enabled":true,
-    "condition":"(c|ç)a.va|tu.{0,30}va(s| ?).{0,30}(bien|mal|comment|bof)|are you ok|comment.{0,30}va(s| ?)|how are you",
+    "condition":"(c|ç)a.va.{0,10}$|tu.{0,30}va(s| ?).{0,30}(bien|mal|comment|bof)|are you ok|comment.{0,30}va(s| ?)|how are you",
     "path":"talk/humor/",
     "priority":1,
     "deps":[]
@@ -190,11 +190,21 @@
     "deps":[]
   },
   {
-    "name":"alarm",
+    "name":"ping",
     "desc":"RORI will ping you when the clock will finish",
+    "img":"rori_modules/talk/ping/_min.jpg",
+    "enabled":true,
+    "condition":"(ping|envoi|send).{0,100}(in|at|dans|à|a).([0-9]+)(:|h|.*)([0-9]*)",
+    "path":"talk/ping/",
+    "priority":2,
+    "deps":[]
+  },
+  {
+    "name":"alarm",
+    "desc":"RORI will wake you up",
     "img":"rori_modules/talk/alarm/_min.jpg",
     "enabled":true,
-    "condition":"(ping|wake|veille|envoi|send).{0,100}(in|at|dans|à|a).([0-9]+)(:|h|.*)([0-9]*)",
+    "condition":"(wake|veille).{0,100}(in|at|dans|à|a).([0-9]+)(:|h|.*)([0-9]*)",
     "path":"talk/alarm/",
     "priority":2,
     "deps":[]

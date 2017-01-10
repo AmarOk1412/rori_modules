@@ -1,0 +1,14 @@
+{
+  "ping": {
+    "en":"Hei! Ping ",
+    "fr_FR":"Hei ! Ping "
+  },
+  "set": {
+    "en":"I will ping you at ",
+    "fr_FR":"Je vous enverrais un message à "
+  },
+  "cant": {
+    "en":"I don't understand...",
+    "fr_FR":"Désolé, je n'ai pas pigé ta phrase."
+  }
+}

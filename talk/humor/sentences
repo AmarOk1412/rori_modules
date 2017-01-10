@@ -4,11 +4,11 @@
     "fr_FR":"Super ! Merci de ton intérêt"
   },
   "soso": {
-    "en":"so so",
-    "fr_FR":"bof"
+    "en":"So so... All the cake is gone. You don't even care, do you?",
+    "fr_FR":"bof, il n'y a plus de gâteau..."
   },
   "bad": {
-    "en":"I'm a little bit sad...",
-    "fr_FR":"Pas terrible"
+    "en":"Oh dear. Someone booted up on the wrong side of the BIOS this morning, if I'm not mistaken. ",
+    "fr_FR":"Je me suis levé du mauvais coté du BIOS ce matin..."
   }
 }

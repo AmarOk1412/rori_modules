@@ -12,8 +12,8 @@
     "fr_FR":"Ok! J'écris quoi à "
   },
   "easy": {
-    "en":"Please delimitate your message with \\\"message\\\"",
-    "fr_FR":"Utilisez les \\\" pour délimiter votre message, c'est plus facile pour moi."
+    "en":"Please delimitate your message with 'message'",
+    "fr_FR":"Utilisez les '' pour délimiter votre message, c'est plus facile pour moi."
   },
   "message": {
     "en":"Hei {0}, {1} says: ",
