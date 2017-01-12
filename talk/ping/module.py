@@ -39,7 +39,7 @@ class Module(RORIModule):
                 is_min = re.findall(r"(hour|heure|min|[0-9]+ ?h|[0-9]+ ?m)", data.content)
                 if len(is_min) == 0:
                     string_to_say = self.rori.get_localized_sentence('cant', self.sentences)
-                    res = self.rori.send_for_best_client("text", data.author, string_to_say)
+                    res = self.rori.send_for_best_client("text", data.author, string_to_say, data.client)
                     return
                 if 'm' in is_min[0]:
                     minute += int(m[0][1])
@@ -61,11 +61,11 @@ class Module(RORIModule):
 
         alarm = Alarm(int(hour), int(minute))
         string_to_say = self.rori.get_localized_sentence('set', self.sentences) + hour_str + "h" + minute_str
-        res = self.rori.send_for_best_client("text", data.author, string_to_say)
+        res = self.rori.send_for_best_client("text", data.author, string_to_say, data.client)
         alarm.start()
         while alarm.is_running:
             time.sleep(20)
         string_to_say = self.rori.get_localized_sentence('ping', self.sentences) + data.author
         happy = self.rori.emotions.get_attr('happy')
         self.rori.emotions.set_attr('happy', str(happy - 1))
-        res = self.rori.send_for_best_client("text", data.author, string_to_say)
+        res = self.rori.send_for_best_client("text", data.author, string_to_say, data.client)

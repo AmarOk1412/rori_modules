@@ -8,7 +8,7 @@ class Module(RORIModule):
         happy = self.rori.emotions.get_attr('happy')
         if happy < -10 and random.randint(0,3) is 1:
             string_to_say = self.rori.get_localized_sentence('later', self.sentences)
-            res = self.rori.send_for_best_client("text", data.author, string_to_say)
+            res = self.rori.send_for_best_client("text", data.author, string_to_say, data.client)
             return
         res = self.rori.send_for_best_client("music", data.author, "start")
         # Change emotion
@@ -16,9 +16,9 @@ class Module(RORIModule):
         # Return result to client
         if res is not None:
             string_to_say = self.rori.get_localized_sentence('playMusic', self.sentences)
-            res = self.rori.send_for_best_client("text", data.author, string_to_say)
+            res = self.rori.send_for_best_client("text", data.author, string_to_say, data.client)
         else:
             string_to_say = self.rori.get_localized_sentence('cant', self.sentences)
-            res = self.rori.send_for_best_client("text", data.author, string_to_say)
+            res = self.rori.send_for_best_client("text", data.author, string_to_say, data.client)
         # We don't want more actions
         self.stop_processing = True

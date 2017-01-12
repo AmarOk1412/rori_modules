@@ -15,7 +15,7 @@ class Module(RORIModule):
                 is_min = re.findall(r"(hour|heure|min|[0-9]+ ?h|[0-9]+ ?m)", data.content)
                 if len(is_min) == 0:
                     string_to_say = self.rori.get_localized_sentence('cant', self.sentences)
-                    res = self.rori.send_for_best_client("text", data.author, string_to_say)
+                    res = self.rori.send_for_best_client("text", data.author, string_to_say, data.client)
                     return
                 if 'm' in is_min[0]:
                     minute += int(m[0][1])
@@ -41,7 +41,7 @@ class Module(RORIModule):
         res = self.rori.send_for_best_client("alarm", data.author, string_to_say)
         if res is None:
             string_to_say = self.rori.get_localized_sentence('nodetect', self.sentences)
-            self.rori.send_for_best_client("text", data.author, string_to_say)
+            self.rori.send_for_best_client("text", data.author, string_to_say, data.client)
         else:
             string_to_say = self.rori.get_localized_sentence('ok', self.sentences) + string_to_say
-            self.rori.send_for_best_client("text", data.author, string_to_say)
+            self.rori.send_for_best_client("text", data.author, string_to_say, data.client)
