@@ -38,10 +38,18 @@ class RORI:
         res = requests.post(url, data=data.to_json_str())
         return res
 
-    def send_for_best_client(self, datatype, user, content):
+    def send_for_best_client(self, datatype, user, content, data_from=None):
         clients_datatype = self.getClientFor(user=user, datatype=datatype)
         if clients_datatype:
-            res = self.send(clients_datatype[0]['id'], RORIData.RORIData(client="rori_server", content=content,  author="rori_server", datatype=datatype, secret=self.secret))
+            pos = 0
+            if data_from is not None:
+                cpt = 0
+                for client in clients_datatype:
+                    if client['name'] == data_from:
+                        pos = cpt
+                        break
+                    cpt += 1
+            res = self.send(clients_datatype[pos]['id'], RORIData.RORIData(client="rori_server", content=content,  author="rori_server", datatype=datatype, secret=self.secret))
             return res
         return None
 

@@ -7,7 +7,11 @@
     "condition":".*",
     "path":"history/",
     "priority":0,
-    "deps":[]
+    "dependencies":{
+                    "return":"",
+                    "modules":"",
+                    "other_infos":"The module need to write in a sqlite3 library"
+                   }
   },
   {
     "name":"wait",
@@ -17,7 +21,11 @@
     "condition":"^(rori.{0,5}|a?)(wait!|attends !)",
     "path":"talk/wait",
     "priority":0,
-    "deps":[]
+    "dependencies":{
+                    "return":"text",
+                    "modules":"",
+                    "other_infos":""
+                   }
   },
   {
     "name":"nervermind",
@@ -27,7 +35,11 @@
     "condition":"^(nevermind|forget this|oublie|laisse tomber)",
     "path":"talk/nevermind/",
     "priority":1,
-    "deps":[]
+    "dependencies":{
+                    "return":"text",
+                    "modules":"",
+                    "other_infos":""
+                   }
   },
   {
     "name":"music_launcher",
@@ -37,7 +49,11 @@
     "condition":"^(musi(c|que) ?!?)|((play|lance|joue).{1,30}(musi(c|que) ?!?))$",
     "path":"music/music_launcher/",
     "priority":1,
-    "deps":[]
+    "dependencies":{
+                    "return":"music|text",
+                    "modules":"",
+                    "other_infos":""
+                   }
   },
   {
     "name":"music_stop",
@@ -47,7 +63,11 @@
     "condition":"^stop.{1,8}musi(c|que)",
     "path":"music/music_stop/",
     "priority":1,
-    "deps":[]
+    "dependencies":{
+                    "return":"music|text",
+                    "modules":"",
+                    "other_infos":""
+                   }
   },
   {
     "name":"hello_world",
@@ -57,7 +77,11 @@
     "condition":"^(salut|bonjour|bonsoir|hei|hi|hello|yo|o/)( rori| ?!?)$",
     "path":"talk/hello_world/",
     "priority":1,
-    "deps":[]
+    "dependencies":{
+                    "return":"text",
+                    "modules":"history",
+                    "other_infos":""
+                   }
   },
   {
     "name":"goodbye_world",
@@ -67,7 +91,11 @@
     "condition":"^(au(.?)revoir|(à|a) la prochaine|bonne soir(ée|ee)|good( |-)bye|bye|j.y.vais)",
     "path":"talk/goodbye_world/",
     "priority":1,
-    "deps":[]
+    "dependencies":{
+                    "return":"text",
+                    "modules":"",
+                    "other_infos":""
+                   }
   },
   {
     "name":"age",
@@ -77,7 +105,11 @@
     "condition":"^(quel es(t) ton.{0,20}(â|a)ge|how old are you|quel.{0,20}(â|a)ge.{0,20}(tu)|quan.{0,10}(existe|tu né|(t'|tu).{0,30}cr(éé|ee))|Since when.{0,100}exist|when.{0,100}create)",
     "path":"talk/age/",
     "priority":1,
-    "deps":[]
+    "dependencies":{
+                    "return":"text",
+                    "modules":"",
+                    "other_infos":""
+                   }
   },
   {
     "name":"license",
@@ -87,7 +119,11 @@
     "condition":"puis.je.{0,100}(source|code)|sous.quelle.licence|(where |a?)can i read.{0,100}code|are you.{0,20}(free|under.{0,100}license)",
     "path":"talk/license/",
     "priority":1,
-    "deps":[]
+    "dependencies":{
+                    "return":"text",
+                    "modules":"",
+                    "other_infos":""
+                   }
   },
   {
     "name":"creator",
@@ -97,7 +133,11 @@
     "condition":"^(pr(é|e)sente|qui).{0,30}(amarok|ton cr(é|e)ateur|t'a(s) cr(éé|ee))|who.{0,100}(create|is amarok|programmer|creator)",
     "path":"talk/creator/",
     "priority":1,
-    "deps":[]
+    "dependencies":{
+                    "return":"text",
+                    "modules":"",
+                    "other_infos":""
+                   }
   },
   {
     "name":"AFINN111",
@@ -107,7 +147,11 @@
     "condition":"^(you are)",
     "path":"talk/AFINN111/",
     "priority":1,
-    "deps":[]
+    "dependencies":{
+                    "return":"text",
+                    "modules":"",
+                    "other_infos":""
+                   }
   },
   {
     "name":"name",
@@ -117,7 +161,11 @@
     "condition":"^(quel est? ton.{0,30}nom.{0,40})|qui e(s|t).{0,4}(tu|vous)|o(u|ù)vien(s|t).ton.{0,20}nom|say.your.name|what.is.your.name|who.are.you|why.rori|rori.{0,100}come.from",
     "path":"talk/name/",
     "priority":1,
-    "deps":[]
+    "dependencies":{
+                    "return":"text",
+                    "modules":"",
+                    "other_infos":""
+                   }
   },
   {
     "name":"humor",
@@ -127,7 +175,11 @@
     "condition":"(c|ç)a.va.{0,10}$|tu.{0,30}va(s| ?).{0,30}(bien|mal|comment|bof)|are you ok|comment.{0,30}va(s| ?)|how are you",
     "path":"talk/humor/",
     "priority":1,
-    "deps":[]
+    "dependencies":{
+                    "return":"text",
+                    "modules":"",
+                    "other_infos":""
+                   }
   },
   {
     "name":"sing",
@@ -137,7 +189,11 @@
     "condition":"^(tu peux| ?)chante(r| ?)|sing",
     "path":"talk/sing/",
     "priority":1,
-    "deps":[]
+    "dependencies":{
+                    "return":"text",
+                    "modules":"",
+                    "other_infos":""
+                   }
   },
   {
     "name":"blackscreen",
@@ -147,7 +203,11 @@
     "condition":"^((é|e)cran.noir|black.screen|(go to | ?)sleep|(vas | ?)dor(s|t|mir))",
     "path":"command/blackscreen/",
     "priority":1,
-    "deps":[]
+    "dependencies":{
+                    "return":"text|shell",
+                    "modules":"",
+                    "other_infos":"Run xset"
+                   }
   },
   {
     "name":"mutesound",
@@ -157,7 +217,11 @@
     "condition":"^(sourdine|muet|mute|coupe le son|no sound please)$",
     "path":"command/mutesound/",
     "priority":1,
-    "deps":[]
+    "dependencies":{
+                    "return":"text|shell",
+                    "modules":"",
+                    "other_infos":"Run pactl"
+                   }
   },
   {
     "name":"enablesound",
@@ -167,7 +231,11 @@
     "condition":"^(remet le |a?)son$|on.{0,20}sound|sound.{0,20}on",
     "path":"command/enablesound/",
     "priority":1,
-    "deps":[]
+    "dependencies":{
+                    "return":"text|shell",
+                    "modules":"",
+                    "other_infos":"Run pactl"
+                   }
   },
   {
     "name":"uptime",
@@ -177,7 +245,11 @@
     "condition":"uptime|since.when.you.{0,20}up",
     "path":"talk/uptime/",
     "priority":1,
-    "deps":[]
+    "dependencies":{
+                    "return":"text",
+                    "modules":"",
+                    "other_infos":"Need uptime command"
+                   }
   },
   {
     "name":"lock",
@@ -187,7 +259,11 @@
     "condition":"(ver(r| ?)ouil(l| ?)(e (l.ordi|le pc|l'(é|e)cran|toi)|age)|bloque.toi)|^lock",
     "path":"command/lock/",
     "priority":1,
-    "deps":[]
+    "dependencies":{
+                    "return":"text|shell",
+                    "modules":"",
+                    "other_infos":"Run i3lock"
+                   }
   },
   {
     "name":"ping",
@@ -197,7 +273,11 @@
     "condition":"(ping|envoi|send).{0,100}(in|at|dans|à|a).([0-9]+)(:|h|.*)([0-9]*)",
     "path":"talk/ping/",
     "priority":2,
-    "deps":[]
+    "dependencies":{
+                    "return":"text",
+                    "modules":"",
+                    "other_infos":""
+                   }
   },
   {
     "name":"alarm",
@@ -207,7 +287,11 @@
     "condition":"(wake|veille).{0,100}(in|at|dans|à|a).([0-9]+)(:|h|.*)([0-9]*)",
     "path":"talk/alarm/",
     "priority":2,
-    "deps":[]
+    "dependencies":{
+                    "return":"text|alarm",
+                    "modules":"",
+                    "other_infos":""
+                   }
   },
   {
     "name":"write",
@@ -217,6 +301,10 @@
     "condition":".+",
     "path":"talk/write/",
     "priority":2,
-    "deps":[]
+    "dependencies":{
+                    "return":"text",
+                    "modules":"",
+                    "other_infos":""
+                   }
   }
 ]

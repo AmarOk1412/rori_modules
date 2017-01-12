@@ -34,6 +34,8 @@ class Module(RORIModule):
         minute = minute % 60
         minute_str = "%02d" % minute
         hour_str = "%02d" % hour
+        happy = self.rori.emotions.get_attr('happy')
+        self.rori.emotions.set_attr('happy', str(happy - 1))
 
         string_to_say = hour_str + ":" + minute_str
         res = self.rori.send_for_best_client("alarm", data.author, string_to_say)

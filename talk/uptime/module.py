@@ -7,4 +7,6 @@ class Module(RORIModule):
         m = re.findall(r"[0-9A-z:]+ up  ([0-9\:]+)", output)
         string_to_say = self.rori.get_localized_sentence('time', self.sentences) + m[0].replace(":","h")
         res = self.rori.send_for_best_client("text", data.author, string_to_say)
+        happy = self.rori.emotions.get_attr('happy')
+        self.rori.emotions.set_attr('happy', str(happy - 1))
         self.stop_processing = True

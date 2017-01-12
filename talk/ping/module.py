@@ -66,4 +66,6 @@ class Module(RORIModule):
         while alarm.is_running:
             time.sleep(20)
         string_to_say = self.rori.get_localized_sentence('ping', self.sentences) + data.author
+        happy = self.rori.emotions.get_attr('happy')
+        self.rori.emotions.set_attr('happy', str(happy - 1))
         res = self.rori.send_for_best_client("text", data.author, string_to_say)
