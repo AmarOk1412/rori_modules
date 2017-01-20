@@ -1,0 +1,14 @@
+{
+  "bad_sentence": {
+    "en":"I don't found any subject in this sentence",
+    "fr_FR":"Je n'ai pas trouvé de sujet dans cette phrase"
+  },
+  "subjects": {
+    "en":"I found: ",
+    "fr_FR":"J'ai trouvé : "
+  },
+  "later": {
+    "en":"I'm sure you can do this alone.",
+    "fr_FR":"Tu peux le faire toi-même."
+  }
+}

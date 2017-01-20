@@ -27,7 +27,7 @@ class Module(RORIModule):
                 string_to_say = self.rori.get_localized_sentence('current_meteo', self.sentences) + city + ": " + meteo["weather"][0]["description"] + "."
                 res = self.rori.send_for_best_client("text", data.author, string_to_say, data.client)
                 temp = meteo["main"]["temp"]-273.15
-                string_to_say = "The current temperature is " + str(temp)
+                string_to_say =  self.rori.get_localized_sentence('current_temp', self.sentences) + str(temp)
                 res = self.rori.send_for_best_client("text", data.author, string_to_say, data.client)
             except:
                 if meteo["message"] == "Error: Not found city":

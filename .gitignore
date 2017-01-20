@@ -1,2 +1,17 @@
 *.pyc
 *.db
+*.jar
+*.java
+*.pdf
+*.bat
+*.zip
+nltk/*.txt
+nltk/*.sh
+nltk/*.xml
+nltk/Makefile
+nltk/bin/
+nltk/conf/
+nltk/data/
+nltk/lexparser-gui.command
+nltk/lexparser_lang.def
+

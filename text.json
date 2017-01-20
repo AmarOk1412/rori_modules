@@ -42,6 +42,20 @@
                    }
   },
   {
+    "name":"get_subject",
+    "desc":"Get the subject in a sentence",
+    "img":"rori_modules/talk/subject/_min.jpg",
+    "enabled":true,
+    "condition":"subject.{0,100}(sentence|line|phrase|in): ",
+    "path":"talk/subject/",
+    "priority":1,
+    "dependencies":{
+                    "return":"text",
+                    "modules":"",
+                    "other_infos":"Need NLTK + Standford parser"
+                   }
+  },
+  {
     "name":"music_launcher",
     "desc":"Launch a random music from player",
     "img":"rori_modules/music/music_launcher/_min.jpg",

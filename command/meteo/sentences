@@ -3,10 +3,14 @@
     "en":"This is the current meteo in ",
     "fr_FR":"Voici la météo de "
   },
-    "bad_meteo": {
-      "en":"Lol, what's this city? I can't find it.",
-      "fr_FR":"La ville ne semble pas exister..."
-    },
+  "current_temp": {
+    "en":"The current temperature is ",
+    "fr_FR":"Et il fait actuellement "
+  },
+  "bad_meteo": {
+    "en":"Lol, what's this city? I can't find it.",
+    "fr_FR":"La ville ne semble pas exister..."
+  },
   "later": {
     "en":"Go on Internet.",
     "fr_FR":"Cherche par toi même"
