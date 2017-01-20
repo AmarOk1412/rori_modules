@@ -210,6 +210,20 @@
                    }
   },
   {
+    "name":"meteo",
+    "desc":"get the meteo in a city",
+    "img":"rori_modules/command/meteo/_min.jpg",
+    "enabled":true,
+    "condition":"(weather|meteo).in.",
+    "path":"command/meteo/",
+    "priority":1,
+    "dependencies":{
+                    "return":"text",
+                    "modules":"",
+                    "other_infos":"Needs curl"
+                   }
+  },
+  {
     "name":"mutesound",
     "desc":"Set in silent mode",
     "img":"rori_modules/command/mutesound/_min.jpg",
