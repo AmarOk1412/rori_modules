@@ -20,7 +20,7 @@ class Module(RORIModule):
             m = re.findall(r"subject.{0,100}(sentence|line|phrase|in): (.+)", data.content)
             sentence = m[0][-1]
             subjects = self.getSubjects(sentence)
-            if len(subjects) is 0:
+            if len(subjects) is 0 or ',' not in subjects:
                 string_to_say = self.rori.get_localized_sentence('bad_sentence', self.sentences)
                 res = self.rori.send_for_best_client("text", data.author, string_to_say, data.client)
             else:

@@ -154,6 +154,20 @@
                    }
   },
   {
+    "name":"who",
+    "desc":"Search on wikipedia who is anyone",
+    "img":"rori_modules/talk/who/_min.jpg",
+    "enabled":true,
+    "condition":"(who.is|qui.es(t))",
+    "path":"talk/who/",
+    "priority":2,
+    "dependencies":{
+                    "return":"text",
+                    "modules":"",
+                    "other_infos":"Need wikipedia (from https://github.com/goldsmith/Wikipedia)"
+                   }
+  },
+  {
     "name":"AFINN111",
     "desc":"Quick evaluation if a phrase is positive or negative (AFINN111 algorithm)",
     "img":"rori_modules/talk/AFINN111/_min.jpg",
@@ -228,7 +242,7 @@
     "desc":"get the meteo in a city",
     "img":"rori_modules/command/meteo/_min.jpg",
     "enabled":true,
-    "condition":"(weather|meteo).in.",
+    "condition":"(weather|meteo).{1,30}in.",
     "path":"command/meteo/",
     "priority":1,
     "dependencies":{
