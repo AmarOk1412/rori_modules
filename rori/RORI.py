@@ -58,6 +58,16 @@ class RORI:
         for c in clients_datatype:
             self.send(c, RORIData.RORIData(client="rori_server", content=content,  author="rori_server", datatype=datatype, secret=self.secret))
 
+    def add_word_to_category(self, category, word):
+        url = "http://" + self.base_url + ":" + self.port + "/add_word/" + category + "/" + word
+        response = requests.get(url)
+        return response
+
+    def rm_word_from_category(self, category, word):
+        url = "http://" + self.base_url + ":" + self.port + "/rm_word/" + category + "/" + word
+        response = requests.get(url)
+        return response
+
     def get_localized_sentence(self, id, data):
             try:
                 json_data = json.loads(data)
