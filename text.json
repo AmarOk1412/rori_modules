@@ -28,6 +28,34 @@
                    }
   },
   {
+    "name":"add_word",
+    "desc":"Add a word to a category",
+    "img":"rori_modules/add_word/_min.jpg",
+    "enabled":true,
+    "condition":"^add_word: ",
+    "path":"talk/add_word",
+    "priority":0,
+    "dependencies":{
+                    "return":"",
+                    "modules":"",
+                    "other_infos":""
+                   }
+  },
+  {
+    "name":"rm_word",
+    "desc":"Remove a word from a category",
+    "img":"rori_modules/rm_word/_min.jpg",
+    "enabled":true,
+    "condition":"^rm_word: ",
+    "path":"talk/rm_word",
+    "priority":0,
+    "dependencies":{
+                    "return":"",
+                    "modules":"",
+                    "other_infos":""
+                   }
+  },
+  {
     "name":"wait",
     "desc":"If we detect an interuption",
     "img":"rori_modules/talk/wait/_min.jpg",
