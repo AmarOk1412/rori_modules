@@ -68,6 +68,11 @@ class RORI:
         response = requests.get(url)
         return response
 
+    def is_word_in_category(self, category, word):
+        url = "http://" + self.base_url + ":" + self.port + "/is/" + category + "/" + word
+        response = requests.get(url)
+        return "1" in response.text
+
     def get_localized_sentence(self, id, data):
             try:
                 json_data = json.loads(data)
