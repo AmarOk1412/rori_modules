@@ -14,6 +14,20 @@
                    }
   },
   {
+    "name":"is_a_color",
+    "desc":"Detect if a word is a color",
+    "img":"rori_modules/is_a_color/_min.jpg",
+    "enabled":true,
+    "condition":"is.{0,100} $CAT(color) a color",
+    "path":"talk/is_a_color",
+    "priority":0,
+    "dependencies":{
+                    "return":"",
+                    "modules":"",
+                    "other_infos":""
+                   }
+  },
+  {
     "name":"wait",
     "desc":"If we detect an interuption",
     "img":"rori_modules/talk/wait/_min.jpg",
