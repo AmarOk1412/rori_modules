@@ -1,33 +1,25 @@
-from rori import RORIModule, RORIData
-import sys
-import sqlite3
-import random
 import datetime
+import random
 import re
+from rori import DBManager, EmotionsManager, Module
 
-
-class DBManager():
-    def __init__(self):
-        self.conn=sqlite3.connect('history.db')
-
+class Database(DBManager):
     def select_message_from_today(self, author):
+        '''get messages from today'''
         dbcur = self.conn.cursor()
         current_day = str(datetime.datetime.now()).split(' ')[0]
-        today_messages = "SELECT Content From Messages Where Author=\"{0}\" AND Msg_date>= Datetime('{1}');".format(author, current_day)
+        today_messages = "SELECT body From History Where author_ring_id=\"" + author + "\" AND tm>= Datetime('" + current_day + "');"
         return dbcur.execute(today_messages).fetchall()
 
-    def __del__(self):
-        self.conn.close()
-
-
-class Module(RORIModule):
-    def process(self, data):
-        db = DBManager()
-        messages = db.select_message_from_today(data.author)
+class Module(Module):
+    def process(self, interaction):
+        '''Say hi to the devices if never seen'''
+        # TODO multidevice hi.
         alreadySeen = False
         nbSeen = 0
-        for message in messages:
-            m = re.findall(r"^(salut|bonjour|bonsoir|hei|hi|hello|yo|o/)( rori| ?!?)$", message[0])
+        for message in Database().select_message_from_today(interaction.author_ring_id):
+            p = re.compile('^(salut|bonjour|bonsoir|hei|hi|hello|yo|o/)( rori| ?!?)$', re.IGNORECASE)
+            m = re.findall(p, message[0])
             if len(m) > 0:
                 nbSeen += 1
                 if nbSeen > 1:
@@ -36,13 +28,13 @@ class Module(RORIModule):
         if alreadySeen:
             randomstr = random.choice(["already", "already2", ""])
             string_to_say = self.rori.get_localized_sentence(randomstr, self.sentences)
-            res = self.rori.send_for_best_client("text", data.author, string_to_say, data.client)
-            happy = self.rori.emotions.get_attr('happy')
-            self.rori.emotions.set_attr('happy', str(happy - 1))
+            self.rori.send_for_best_client("text", interaction.author_ring_id, string_to_say)
+            # Update emotions
+            csadness = EmotionsManager().get_emotions(interaction.author_ring_id)[4]
+            csadness = 20 if csadness > 20 else csadness
+            EmotionsManager().go_to_emotion(ring_id=interaction.author_ring_id, delta=2, joy=60, sadness=csadness)
         else:
             randomstr = random.choice(["salut", "bonjour", "longtime", "o/"])
             string_to_say = self.rori.get_localized_sentence(randomstr, self.sentences)
-            res = self.rori.send_for_best_client("text", data.author, string_to_say, data.client)
-            happy = self.rori.emotions.get_attr('happy')
-            self.rori.emotions.set_attr('happy', str(happy + 1))
+            res = self.rori.send_for_best_client("text", interaction.author_ring_id, string_to_say)
         self.stop_processing = True

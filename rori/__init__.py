@@ -1,3 +1,4 @@
-from rori.RORIModule import RORIModule
-from rori.RORIData import *
-from rori.RORIEmotions import RORIEmotions
+from .interaction import Interaction
+from .module import Module
+from .RORI import RORI
+from .utils import DBManager, EmotionsManager
