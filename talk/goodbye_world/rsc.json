@@ -1,0 +1,18 @@
+{
+  "aurevoir": {
+    "en":"Bye",
+    "fr_FR":"Aurevoir"
+  },
+  "next": {
+    "en":"See you next time.",
+    "fr_FR":"À la prochaine"
+  },
+  "goodnight": {
+    "en":"Congratulations, the test is over.",
+    "fr_FR":"Bravo, le test est terminé !"
+  },
+  "bye": {
+    "en":"Bye!",
+    "fr_FR":"salut !"
+  }
+}

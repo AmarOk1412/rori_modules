@@ -44,7 +44,7 @@ class EmotionsManager:
             csadness = min(csadness + delta, sadness) if sadness > csadness else max(csadness - delta, sadness)
         if fear != None and fear != cfear:
             cfear = min(cfear + delta, fear) if fear > cfear else max(cfear - delta, fear)
-        self.conn.execute('UPDATE emotions SET love=' + clove + ', joy=' + cjoy + ', surprise=' + csurprise + ', anger=' + canger + ', sadness=' + csadness + ', fear=' + cfear + ' WHERE username=\"' + username + '\"')
+        self.conn.execute('UPDATE emotions SET love=' + str(clove) + ', joy=' + str(cjoy) + ', surprise=' + str(csurprise) + ', anger=' + str(canger) + ', sadness=' + str(csadness) + ', fear=' + str(cfear) + ' WHERE username=\"' + username + '\"')
         self.conn.commit()
         return
 
