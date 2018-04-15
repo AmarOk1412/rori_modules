@@ -1,0 +1,10 @@
+{
+  "dont_know":  {
+    "en":"I don't know.",
+    "fr_FR":"Aucune idée"
+  },
+  "me":  {
+    "en":"It's ME!",
+    "fr_FR":"C'est moi !"
+  }
+}
