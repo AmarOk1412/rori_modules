@@ -6,7 +6,7 @@ class Module(Module):
         '''Say when RORI is born'''
         randomstr = random.choice(["2011","immortal"])
         string_to_say = self.rori.get_localized_sentence(randomstr, self.sentences)
-        self.rori.send_for_best_client("text", interaction.author_ring_id, string_to_say)
+        self.rori.send_for_best_client("text/plain", interaction.author_ring_id, string_to_say)
         # Update emotions
         csadness = EmotionsManager().get_emotions(interaction.author_ring_id)[4]
         csadness = 20 if csadness > 20 else csadness

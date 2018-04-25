@@ -1,0 +1,14 @@
+{
+  "playMusic": {
+    "en":"Yeah, Music!",
+    "fr_FR":"Musique !"
+  },
+  "cant": {
+    "en":"I can't detect endpoint for music command",
+    "fr_FR":"Je ne trouve pas de sortie pour la musique..."
+  },
+  "later": {
+    "en":"No, I don't want some music for now.",
+    "fr_FR":"nope, j'ai pas envie de musique pour le moment."
+  }
+}

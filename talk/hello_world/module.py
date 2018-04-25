@@ -28,7 +28,7 @@ class Module(Module):
         if alreadySeen:
             randomstr = random.choice(["already", "already2", ""])
             string_to_say = self.rori.get_localized_sentence(randomstr, self.sentences)
-            self.rori.send_for_best_client("text", interaction.author_ring_id, string_to_say)
+            self.rori.send_for_best_client("text/plain", interaction.author_ring_id, string_to_say)
             # Update emotions
             csadness = EmotionsManager().get_emotions(interaction.author_ring_id)[4]
             csadness = 20 if csadness > 20 else csadness
@@ -36,5 +36,5 @@ class Module(Module):
         else:
             randomstr = random.choice(["salut", "bonjour", "longtime", "o/"])
             string_to_say = self.rori.get_localized_sentence(randomstr, self.sentences)
-            res = self.rori.send_for_best_client("text", interaction.author_ring_id, string_to_say)
+            res = self.rori.send_for_best_client("text/plain", interaction.author_ring_id, string_to_say)
         self.stop_processing = True
