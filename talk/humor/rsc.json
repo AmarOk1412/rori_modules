@@ -1,0 +1,14 @@
+{
+  "happy": {
+    "en":"I am good, thank you for your interest in me.",
+    "fr_FR":"Super ! Merci de ton intérêt"
+  },
+  "soso": {
+    "en":"So so... All the cake is gone. You don't even care, do you?",
+    "fr_FR":"bof, il n'y a plus de gâteau..."
+  },
+  "bad": {
+    "en":"Oh dear. Someone booted up on the wrong side of the BIOS this morning, if I'm not mistaken. ",
+    "fr_FR":"Je me suis levé du mauvais coté du BIOS ce matin..."
+  }
+}
