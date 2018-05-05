@@ -3,7 +3,7 @@ from rori import EmotionsManager, Module
 
 class Module(Module):
     def process(self, interaction):
-        '''Start music on compatible devices'''
+        '''Stop music on compatible devices'''
         emotions = EmotionsManager().get_emotions(interaction.author_ring_id)
         cjoy = emotions[1]
         csadness = emotions[4]
