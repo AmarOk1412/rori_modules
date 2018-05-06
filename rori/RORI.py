@@ -46,7 +46,6 @@ class RORI:
             else:
                 chosen_device = db.select_devices_with_datatype(username, datatype)
                 if len(chosen_device) > 0:
-                    print("SEND THIS MOTHER FUCKER")
                     sendTextMessage(config['ring_id'], chosen_device[0][0], {datatype: content})
         return True
 

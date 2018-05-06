@@ -1,0 +1,14 @@
+{
+  "sleep": {
+    "en":"Sleep mode activated!",
+    "fr_FR":"Je viens d'éteindre l'écran !"
+  },
+  "cant": {
+    "en":"I can't detect endpoint for this command",
+    "fr_FR":"Je ne trouve pas de sortie pour cette commande..."
+  },
+  "later": {
+    "en":"Hmm, I don't want to.",
+    "fr_FR":"Je n'en ai pas vraiment envie pour le moment"
+  }
+}
