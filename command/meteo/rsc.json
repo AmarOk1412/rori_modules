@@ -1,0 +1,26 @@
+{
+  "current_meteo": {
+    "en":"The current weather in ",
+    "fr_FR":"Voici la météo de "
+  },
+  "current_temp": {
+    "en":"With a temperature of ",
+    "fr_FR":"Et il fait actuellement "
+  },
+  "bad_meteo": {
+    "en":"Lol, what's this city? I can't find it.",
+    "fr_FR":"La ville ne semble pas exister..."
+  },
+  "later": {
+    "en":"Go on Internet!",
+    "fr_FR":"Cherche par toi même..."
+  },
+  "degrees": {
+    "en":" degrees",
+    "fr_FR":" degres"
+  },
+  "is": {
+    "en":" is ",
+    "fr_FR":" est "
+  }
+}
