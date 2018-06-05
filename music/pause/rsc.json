@@ -1,0 +1,14 @@
+{
+  "ok": {
+    "en":"Ok",
+    "fr_FR":"Ok"
+  },
+  "cant": {
+    "en":"I can't detect endpoint for music command",
+    "fr_FR":"Je ne trouve pas de sortie pour la musique..."
+  },
+  "later": {
+    "en":"No! This one is awesome",
+    "fr_FR":"Non! Celle-ci est correcte."
+  }
+}

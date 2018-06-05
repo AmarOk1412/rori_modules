@@ -1,0 +1,14 @@
+{
+  "ok": {
+    "en":"Yeah the previous one was cool",
+    "fr_FR":"Cool, j'aime celle-ci."
+  },
+  "cant": {
+    "en":"I can't detect endpoint for music command",
+    "fr_FR":"Je ne trouve pas de sortie pour la musique..."
+  },
+  "later": {
+    "en":"I didn't like the previous one...",
+    "fr_FR":"Je n'ai pas aimé la précédente"
+  }
+}
