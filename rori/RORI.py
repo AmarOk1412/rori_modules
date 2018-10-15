@@ -19,7 +19,7 @@ class Database(DBManager):
         '''get devices with a datatype for the given user'''
         dbcur = self.conn.cursor()
         compatible_devices = "SELECT ring_id From Devices Where ring_id=\"" + ring_id + "\" AND additional_types LIKE \"%" + datatype + "%\";"
-        return len(dbcur.execute(compatible_devices).fetchall()) == 0
+        return len(dbcur.execute(compatible_devices).fetchall()) != 0
 
 class RORI:
     def __init__(self):
@@ -43,10 +43,14 @@ class RORI:
             if len(username) == 0:
                 if db.is_compatible_with_datatype(from_ring_id, datatype):
                     sendTextMessage(config['ring_id'], from_ring_id, {datatype: content})
+                else:
+                    return False
             else:
                 chosen_device = db.select_devices_with_datatype(username, datatype)
                 if len(chosen_device) > 0:
                     sendTextMessage(config['ring_id'], chosen_device[0][0], {datatype: content})
+                else:
+                    return False
         return True
 
     def get_localized_sentence(self, id, data):
