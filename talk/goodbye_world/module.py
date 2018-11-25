@@ -1,7 +1,7 @@
 import datetime
 import random
 import re
-from rori import DBManager, EmotionsManager, Module
+from rori import DirectReplyMDProcessor, DBManager, EmotionsManager, Module
 
 class Database(DBManager):
     def select_message_from_today(self, author):
@@ -14,6 +14,7 @@ class Database(DBManager):
 class Module(Module):
     def process(self, interaction):
         '''Say bye to the devices if never seen'''
+        rmd = DirectReplyMDProcessor(interaction).process()
         alreadySeen = False
         nbSeen = 0
         for message in Database().select_message_from_today(interaction.author_ring_id):
@@ -27,7 +28,7 @@ class Module(Module):
         if alreadySeen:
             randomstr = random.choice(["aurevoir", "next", "goodnight", "bye"])
             string_to_say = self.rori.get_localized_sentence(randomstr, self.sentences)
-            self.rori.send_for_best_client("text/plain", interaction.author_ring_id, string_to_say)
+            self.rori.send_for_best_client("text/plain", interaction.author_ring_id, string_to_say, rmd)
             # Update emotions
             csadness = EmotionsManager().get_emotions(interaction.author_ring_id)[4]
             csadness = 20 if csadness > 20 else csadness

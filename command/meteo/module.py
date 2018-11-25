@@ -2,7 +2,7 @@ import random
 import subprocess
 import re
 import json
-from rori import EmotionsManager, Module
+from rori import DirectReplyMDProcessor, EmotionsManager, Module
 
 class Module(Module):
     def getMeteo(self, city):
@@ -13,6 +13,7 @@ class Module(Module):
 
     def process(self, interaction):
         '''Retrieve the current meteo'''
+        rmd = DirectReplyMDProcessor(interaction).process()
         self.stop_processing = True
         emotions = EmotionsManager().get_emotions(interaction.author_ring_id)
         cjoy = emotions[1]
@@ -20,7 +21,7 @@ class Module(Module):
         if (cjoy < 30 or csadness > 60) and random.randint(0,3) is 1:
             # RORI do not want to play music
             string_to_say = self.rori.get_localized_sentence('later', self.sentences)
-            self.rori.send_for_best_client("text/plain", interaction.author_ring_id, string_to_say)
+            self.rori.send_for_best_client("text/plain", interaction.author_ring_id, string_to_say, rmd)
             return
 
         m = re.findall(r"(weather|meteo).{1,30}in.(the city of |)(\w*)", interaction.body)
@@ -33,7 +34,7 @@ class Module(Module):
             temp = meteo["main"]["temp"]-273.15
             temp_str = '%i' % temp
             string_to_say +=  self.rori.get_localized_sentence('current_temp', self.sentences) + temp_str + self.rori.get_localized_sentence('degrees', self.sentences)
-            self.rori.send_for_best_client("text/plain", interaction.author_ring_id, string_to_say)
+            self.rori.send_for_best_client("text/plain", interaction.author_ring_id, string_to_say, rmd)
 
             # Change emotions
             if 'clear' in description or 'clouds' in description or 'snow' in description:
@@ -51,7 +52,7 @@ class Module(Module):
         except:
             if meteo["message"] == "Error: Not found city":
                 string_to_say = self.rori.get_localized_sentence('bad_meteo', self.sentences)
-                self.rori.send_for_best_client("text/plain", interaction.author_ring_id, string_to_say)
+                self.rori.send_for_best_client("text/plain", interaction.author_ring_id, string_to_say, rmd)
             # Change emotions
             csadness = 60 if csadness < 60 else csadness
             cjoy = 40 if csadness > 40 else cjoy

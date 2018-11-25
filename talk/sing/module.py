@@ -1,4 +1,4 @@
-from rori import EmotionsManager, Module
+from rori import DirectReplyMDProcessor, EmotionsManager, Module
 
 class Module(Module):
     def process(self, interaction):
@@ -7,7 +7,9 @@ class Module(Module):
         sing = self.rori.get_localized_sentence('cant', self.sentences)
         if cjoy > 60:
             sing = self.rori.get_localized_sentence('ok', self.sentences)
-        self.rori.send_for_best_client("text/plain", interaction.author_ring_id, sing)
+        rmd = DirectReplyMDProcessor(interaction).process()
+        self.rori.send_for_best_client(
+            "text/plain", interaction.author_ring_id, sing, rmd)
 
         # Update emotions
         csadness = EmotionsManager().get_emotions(interaction.author_ring_id)[4]

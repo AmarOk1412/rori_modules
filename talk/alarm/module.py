@@ -1,9 +1,10 @@
-from rori import EmotionsManager, Module
+from rori import DirectReplyMDProcessor, EmotionsManager, Module
 import sys, os, re, time
 
 class Module(Module):
     def process(self, interaction):
         '''RORI wake up user'''
+        rmd = DirectReplyMDProcessor(interaction).process()
         self.stop_processing = True
         m = re.findall(r"(in|at|dans|à|a).([0-9]+)(:|h|.*)([0-9]*)", interaction.body)
         hour = 0
@@ -16,7 +17,7 @@ class Module(Module):
                 is_min = re.findall(r"(hour|heure|min|[0-9]+ ?h|[0-9]+ ?m)", interaction.body)
                 if len(is_min) == 0:
                     string_to_say = self.rori.get_localized_sentence('cant', self.sentences)
-                    self.rori.send_for_best_client("text/plain", interaction.author_ring_id, string_to_say)
+                    self.rori.send_for_best_client("text/plain", interaction.author_ring_id, string_to_say, rmd)
                     return
                 if 'm' in is_min[0]:
                     minute += int(m[0][1])
@@ -35,13 +36,13 @@ class Module(Module):
         minute_str = "%02d" % minute
         hour_str = "%02d" % hour
         string_to_say = hour_str + ":" + minute_str
-        res = self.rori.send_for_best_client("alarm",  interaction.author_ring_id, string_to_say)
+        res = self.rori.send_for_best_client("alarm",  interaction.author_ring_id, string_to_say, rmd)
         if res is None:
             string_to_say = self.rori.get_localized_sentence('nodetect', self.sentences)
-            self.rori.send_for_best_client("text/plain", interaction.author_ring_id, string_to_say)
+            self.rori.send_for_best_client("text/plain", interaction.author_ring_id, string_to_say, rmd)
         else:
             string_to_say = self.rori.get_localized_sentence('ok', self.sentences) + string_to_say
-            self.rori.send_for_best_client("text/plain", interaction.author_ring_id, string_to_say)
+            self.rori.send_for_best_client("text/plain", interaction.author_ring_id, string_to_say, rmd)
 
         # Update emotions
         cjoy = EmotionsManager().get_emotions(interaction.author_ring_id)[1]

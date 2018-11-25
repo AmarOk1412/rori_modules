@@ -1,7 +1,7 @@
 import datetime
 import random
 import re
-from rori import DBManager, EmotionsManager, Module
+from rori import DBManager, DirectReplyMDProcessor, EmotionsManager, Module
 
 class Database(DBManager):
     def select_message_from_today(self, author):
@@ -14,6 +14,7 @@ class Database(DBManager):
 class Module(Module):
     def process(self, interaction):
         '''Say hi to the devices if never seen'''
+        rmd=DirectReplyMDProcessor(interaction).process()
         # TODO multidevice hi.
         alreadySeen = False
         nbSeen = 0
@@ -28,7 +29,7 @@ class Module(Module):
         if alreadySeen:
             randomstr = random.choice(["already", "already2", ""])
             string_to_say = self.rori.get_localized_sentence(randomstr, self.sentences)
-            self.rori.send_for_best_client("text/plain", interaction.author_ring_id, string_to_say)
+            self.rori.send_for_best_client("text/plain", interaction.author_ring_id, string_to_say, rmd)
             # Update emotions
             csadness = EmotionsManager().get_emotions(interaction.author_ring_id)[4]
             csadness = 20 if csadness > 20 else csadness
@@ -36,5 +37,5 @@ class Module(Module):
         else:
             randomstr = random.choice(["salut", "bonjour", "longtime", "o/"])
             string_to_say = self.rori.get_localized_sentence(randomstr, self.sentences)
-            res = self.rori.send_for_best_client("text/plain", interaction.author_ring_id, string_to_say)
+            res = self.rori.send_for_best_client("text/plain", interaction.author_ring_id, string_to_say, rmd)
         self.stop_processing = True

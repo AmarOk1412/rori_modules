@@ -1,15 +1,16 @@
-from rori import EmotionsManager, Module
+from rori import DirectReplyMDProcessor, EmotionsManager, Module
 
 class Module(Module):
     def process(self, interaction):
         '''Say how RORI is'''
+        rmd = DirectReplyMDProcessor(interaction).process()
         cjoy = EmotionsManager().get_emotions(interaction.author_ring_id)[1]
         humor = self.rori.get_localized_sentence('soso', self.sentences)
         if cjoy > 60:
             humor = self.rori.get_localized_sentence('happy', self.sentences)
         if cjoy < 40:
             humor = self.rori.get_localized_sentence('bad', self.sentences)
-        self.rori.send_for_best_client("text/plain", interaction.author_ring_id, humor)
+        self.rori.send_for_best_client("text/plain", interaction.author_ring_id, humor, rmd)
 
         # Update emotions
         csadness = EmotionsManager().get_emotions(interaction.author_ring_id)[4]

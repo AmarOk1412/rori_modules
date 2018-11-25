@@ -1,6 +1,6 @@
 
 from datetime import timedelta
-from rori import EmotionsManager, Module
+from rori import DirectReplyMDProcessor, EmotionsManager, Module
 
 class Module(Module):
     def process(self, interaction):
@@ -10,7 +10,9 @@ class Module(Module):
             uptime_string = str(timedelta(seconds = uptime_seconds))
             uptime_string = uptime_string[:uptime_string.rfind(':')].replace(':','h')
         string_to_say = self.rori.get_localized_sentence('time', self.sentences) + uptime_string
-        self.rori.send_for_best_client("text/plain", interaction.author_ring_id, string_to_say)
+        rmd = DirectReplyMDProcessor(interaction).process()
+        self.rori.send_for_best_client(
+            "text/plain", interaction.author_ring_id, string_to_say, rmd)
         # Update emotions
         cjoy = EmotionsManager().get_emotions(interaction.author_ring_id)[1]
         cjoy = 20 if cjoy > 20 else cjoy

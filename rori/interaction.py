@@ -6,3 +6,4 @@ class Interaction:
         self.author_ring_id = json_value['author_ring_id']
         self.body = json_value['body']
         self.time = json_value['time']
+        self.metadatas = json_value['metadatas']
