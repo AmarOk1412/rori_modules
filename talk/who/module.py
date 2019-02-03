@@ -12,11 +12,11 @@ class Module(Module):
         try:
             if who[:4].lower() != "rori":
                 string_to_say = wikipedia.summary(who, sentences=2)
-                self.rori.send_for_best_client("text/plain", interaction.author_ring_id, string_to_say, rmd)
+                self.rori.send_for_best_client("text/plain", interaction.device_author, string_to_say, rmd)
             else:
                 string_to_say = self.rori.get_localized_sentence('me', self.sentences)
-                self.rori.send_for_best_client("text/plain", interaction.author_ring_id, string_to_say, rmd)
+                self.rori.send_for_best_client("text/plain", interaction.device_author, string_to_say, rmd)
         except:
             string_to_say = self.rori.get_localized_sentence('dont_know', self.sentences)
-            self.rori.send_for_best_client("text/plain", interaction.author_ring_id, string_to_say, rmd)
+            self.rori.send_for_best_client("text/plain", interaction.device_author, string_to_say, rmd)
         self.stop_processing = True

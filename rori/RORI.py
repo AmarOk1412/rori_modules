@@ -13,26 +13,26 @@ class Database(DBManager):
     def select_devices_with_datatype(self, username, datatype):
         '''get devices with a datatype for the given user'''
         dbcur = self.conn.cursor()
-        compatible_devices = "SELECT ring_id From Devices Where username=\"" + username + "\" AND additional_types LIKE \"%" + datatype + "%\";"
+        compatible_devices = "SELECT hash FROM Devices Where username=\"" + username + "\" AND additional_types LIKE \"%" + datatype + "%\";"
         return dbcur.execute(compatible_devices).fetchall()
 
-    def get_username(self, ring_id):
+    def get_username(self, d_id):
         '''get devices with a datatype for the given user'''
         dbcur = self.conn.cursor()
-        username_req = "SELECT username From Devices Where ring_id=\"" + ring_id + "\";"
+        username_req = "SELECT username FROM Devices Where id=\"" + d_id + "\";"
         return dbcur.execute(username_req).fetchall()
 
-    def is_compatible_with_datatype(self, ring_id, datatype):
+    def is_compatible_with_datatype(self, d_id, datatype):
         '''get devices with a datatype for the given user'''
         dbcur = self.conn.cursor()
-        compatible_devices = "SELECT ring_id From Devices Where ring_id=\"" + ring_id + "\" AND additional_types LIKE \"%" + datatype + "%\";"
+        compatible_devices = "SELECT hash FROM Devices Where id=\"" + d_id + "\" AND additional_types LIKE \"%" + datatype + "%\";"
         return len(dbcur.execute(compatible_devices).fetchall()) != 0
 
 class RORI:
     def __init__(self):
         self.lang = 'en'
 
-    def send_for_best_client(self, datatype, from_ring_id, content, metadatas={}):
+    def send_for_best_client(self, datatype, device, content, metadatas={}):
         '''Send a mesage to the best device'''
         if len(content) == 0:
             return False
@@ -47,12 +47,12 @@ class RORI:
         with open('config.json', 'r') as f:
             config = json.loads(f.read())
         if datatype == "text/plain":
-            sendTextMessage(config['ring_id'], from_ring_id, payloads)
+            sendTextMessage(config['ring_id'], device["ring_id"], payloads)
         else:
-            username = db.get_username(from_ring_id)[0][0]
+            username = db.get_username(str(device["id"]))[0][0]
             if len(username) == 0:
-                if db.is_compatible_with_datatype(from_ring_id, datatype):
-                    sendTextMessage(config['ring_id'], from_ring_id, payloads)
+                if db.is_compatible_with_datatype(str(device["id"]), datatype):
+                    sendTextMessage(config['ring_id'], device["ring_id"], payloads)
                 else:
                     return False
             else:

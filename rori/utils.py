@@ -11,9 +11,9 @@ class EmotionsManager:
     def __init__(self):
         self.conn=sqlite3.connect('rori.db')
 
-    def get_emotions(self, ring_id):
+    def get_emotions(self, d_id):
         # get linked username
-        username = self.conn.execute("SELECT username FROM devices WHERE ring_id=\"{ring_id}\"").fetchone()
+        username = self.conn.execute("SELECT username FROM devices WHERE id=\"{d_id}\"").fetchone()
         if username == None:
             username = ""
         # Get current emotions for this user
@@ -25,11 +25,11 @@ class EmotionsManager:
             return (50, 50, 50, 50, 50, 50)
         return result
 
-    def go_to_emotion(self, ring_id, love = None, joy = None, surprise = None, anger = None, sadness = None, fear = None, delta = 1):
-        username = self.conn.execute("SELECT username FROM devices WHERE ring_id=\"{ring_id}\"").fetchone()
+    def go_to_emotion(self, d_id, love = None, joy = None, surprise = None, anger = None, sadness = None, fear = None, delta = 1):
+        username = self.conn.execute("SELECT username FROM devices WHERE id=\"{d_id}\"").fetchone()
         if username == None:
             username = ""
-        cemotions = self.get_emotions(ring_id)
+        cemotions = self.get_emotions(d_id)
         clove, cjoy, csurprise, canger, csadness, cfear = zip(cemotions)
         clove, cjoy, csurprise, canger, csadness, cfear = clove[0], cjoy[0], csurprise[0], canger[0], csadness[0], cfear[0]
         if love != None and love != clove:

@@ -17,7 +17,7 @@ class Module(Module):
                 is_min = re.findall(r"(hour|heure|min|[0-9]+ ?h|[0-9]+ ?m)", interaction.body)
                 if len(is_min) == 0:
                     string_to_say = self.rori.get_localized_sentence('cant', self.sentences)
-                    self.rori.send_for_best_client("text/plain", interaction.author_ring_id, string_to_say, rmd)
+                    self.rori.send_for_best_client("text/plain", interaction.device_author, string_to_say, rmd)
                     return
                 if 'm' in is_min[0]:
                     minute += int(m[0][1])
@@ -36,15 +36,15 @@ class Module(Module):
         minute_str = "%02d" % minute
         hour_str = "%02d" % hour
         string_to_say = hour_str + ":" + minute_str
-        res = self.rori.send_for_best_client("alarm",  interaction.author_ring_id, string_to_say, rmd)
+        res = self.rori.send_for_best_client("alarm",  interaction.device_author, string_to_say, rmd)
         if res is None:
             string_to_say = self.rori.get_localized_sentence('nodetect', self.sentences)
-            self.rori.send_for_best_client("text/plain", interaction.author_ring_id, string_to_say, rmd)
+            self.rori.send_for_best_client("text/plain", interaction.device_author, string_to_say, rmd)
         else:
             string_to_say = self.rori.get_localized_sentence('ok', self.sentences) + string_to_say
-            self.rori.send_for_best_client("text/plain", interaction.author_ring_id, string_to_say, rmd)
+            self.rori.send_for_best_client("text/plain", interaction.device_author, string_to_say, rmd)
 
         # Update emotions
-        cjoy = EmotionsManager().get_emotions(interaction.author_ring_id)[1]
+        cjoy = EmotionsManager().get_emotions(str(interaction.device_author["id"]))[1] 
         cjoy = 40 if cjoy < 40 else cjoy
-        EmotionsManager().go_to_emotion(ring_id=interaction.author_ring_id, delta=1, joy=cjoy)
+        EmotionsManager().go_to_emotion(d_id=str(interaction.device_author["id"]), delta=1, joy=cjoy)

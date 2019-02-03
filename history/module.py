@@ -22,7 +22,7 @@ class Database(DBManager):
                 time -= datetime.timedelta(hours=h, minutes=m)
             else:
                 time += datetime.timedelta(hours=h, minutes=m)
-        addMessageRequest = "INSERT INTO History(author_ring_id, body, tm) VALUES(\"{0}\",\"{1}\",\"{2}\")".format(interaction.author_ring_id, interaction.body, str(time))
+        addMessageRequest = "INSERT INTO History(author_ring_id, body, tm) VALUES(\"{0}\",\"{1}\",\"{2}\")".format(str(interaction.device_author["id"]), interaction.body, str(time))
         dbcur.execute(addMessageRequest)
         self.conn.commit()
 

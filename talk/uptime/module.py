@@ -12,9 +12,9 @@ class Module(Module):
         string_to_say = self.rori.get_localized_sentence('time', self.sentences) + uptime_string
         rmd = DirectReplyMDProcessor(interaction).process()
         self.rori.send_for_best_client(
-            "text/plain", interaction.author_ring_id, string_to_say, rmd)
+            "text/plain", interaction.device_author, string_to_say, rmd)
         # Update emotions
-        cjoy = EmotionsManager().get_emotions(interaction.author_ring_id)[1]
+        cjoy = EmotionsManager().get_emotions(str(interaction.device_author["id"]))[1]
         cjoy = 20 if cjoy > 20 else cjoy
-        EmotionsManager().go_to_emotion(ring_id=interaction.author_ring_id, delta=1, joy=cjoy)
+        EmotionsManager().go_to_emotion(d_id=str(interaction.device_author["id"]), delta=1, joy=cjoy)
         self.stop_processing = True
