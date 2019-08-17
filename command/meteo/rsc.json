@@ -2,8 +2,12 @@
   "current_meteo": {
     "en":"The current weather in ",
     "fr_FR":"Voici la météo de "
+  }
+  ,"tomorrow_meteo": {
+    "en":"Tomorrow, the weather in ",
+    "fr_FR":"Voici la météo pour demain de "
   },
-  "current_temp": {
+  "temp": {
     "en":"With a temperature of ",
     "fr_FR":"Et il fait actuellement "
   },
@@ -22,5 +26,17 @@
   "is": {
     "en":" is ",
     "fr_FR":" est "
+  },
+  "will": {
+    "en":" will be ",
+    "fr_FR":" sera "
+  },
+  "in_first": {
+    "en":"In ",
+    "fr_FR":"Dans "
+  },
+  "in_sec": {
+    "en":" days, the meteo in ",
+    "fr_FR":" jours, la météo de "
   }
 }
