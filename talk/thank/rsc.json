@@ -1,0 +1,14 @@
+{
+  "welcome": {
+    "en":"You're welcome",
+    "fr_FR":"Bienvenue"
+  },
+  "np": {
+    "en":"No problem",
+    "fr_FR":"Pas de problèmes"
+  },
+  "servitor": {
+    "en":"At your beck and call",
+    "fr_FR":"À votre service"
+  }
+}

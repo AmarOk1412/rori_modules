@@ -1,0 +1,14 @@
+{
+  "news": {
+    "en":"Let's see the news.",
+    "fr_FR":"Boyons voir les news"
+  },
+  "cant": {
+    "en":"I can't detect endpoint for this command",
+    "fr_FR":"Je ne trouve pas de sortie pour cette command..."
+  },
+  "later": {
+    "en":"No, I don't want to open the news...",
+    "fr_FR":"Désolé pas trop envie de voir les nouvelles de ce monde..."
+  }
+}
