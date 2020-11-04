@@ -9,7 +9,7 @@ class Module(Module):
         emotions = EmotionsManager().get_emotions(str(interaction.device_author["id"]))
         cjoy = emotions[1]
         csadness = emotions[4]
-        if (cjoy < 30 or csadness > 60) and random.randint(0,3) is 1:
+        if (cjoy < 30 or csadness > 60) and random.randint(0,3) == 1:
             # RORI do not want to play music
             string_to_say = self.rori.get_localized_sentence('later', self.sentences)
             self.rori.send_for_best_client("text/plain", interaction.device_author, string_to_say, rmd)

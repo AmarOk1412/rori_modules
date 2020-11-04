@@ -1,0 +1,15 @@
+{
+    "found": {
+      "en":"This feed is already subscribed",
+      "fr_FR":"Je suis déjà ce feed RSS"
+    }
+    ,"added": {
+      "en":"I will send you updates for this feed.",
+      "fr_FR":"Je vais dorénavant vous informer des nouvelles de ce feed."
+    }
+    ,"failed": {
+      "en":"I can't follow this feed",
+      "fr_FR":"Je suis dans l'incapacité à suivre ce feed."
+    }
+}
+  

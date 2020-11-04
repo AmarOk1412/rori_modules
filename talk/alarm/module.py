@@ -37,7 +37,7 @@ class Module(Module):
         hour_str = "%02d" % hour
         string_to_say = hour_str + ":" + minute_str
         res = self.rori.send_for_best_client("alarm",  interaction.device_author, string_to_say, rmd)
-        if res is None:
+        if res is False:
             string_to_say = self.rori.get_localized_sentence('nodetect', self.sentences)
             self.rori.send_for_best_client("text/plain", interaction.device_author, string_to_say, rmd)
         else:

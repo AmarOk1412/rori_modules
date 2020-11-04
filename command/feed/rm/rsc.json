@@ -1,0 +1,11 @@
+{
+    "found": {
+      "en":"Feed successfully unsubscribed",
+      "fr_FR":"Je me suis désabonné de ce flux"
+    }
+    ,"failed": {
+      "en":"I can't unfollow this feed",
+      "fr_FR":"Je suis dans l'incapacité à me désabonner de ce flux"
+    }
+}
+  
